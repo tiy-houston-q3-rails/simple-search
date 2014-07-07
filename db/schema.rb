@@ -11,16 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140707145606) do
+ActiveRecord::Schema.define(version: 20140707145855) do
 
   create_table "assignments", force: true do |t|
     t.string   "title"
     t.text     "description"
     t.date     "assigned"
-    t.date     "due"
+    t.date     "due_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "completed_assignments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "assignment_id"
+    t.boolean  "on_time"
+    t.string   "github_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "completed_assignments", ["assignment_id"], name: "index_completed_assignments_on_assignment_id"
+  add_index "completed_assignments", ["user_id"], name: "index_completed_assignments_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "name"
