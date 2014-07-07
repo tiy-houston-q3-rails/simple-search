@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  post 'homework' => "homework#create", as: :homework
+
   resources :completed_assignments
 
-  root to: "completed_assignments#index"
-  
+  root to: "page#show"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

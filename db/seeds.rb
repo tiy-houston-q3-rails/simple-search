@@ -11,9 +11,9 @@ names.each do |name|
   User.create name: name
 end
 
-week1 = Assignment.create title: "Week 1", description: "Oh hai there", assigned: 3.weeks.ago, due_date: 2.weeks.ago
-week2 = Assignment.create title: "Week 2", description: "DUECES Oh hai there", assigned: 2.weeks.ago, due_date: 1.weeks.ago
-week3 = Assignment.create title: "Week 3", description: "TRES Oh hai there", assigned: 5.days.ago, due_date: 23.hours.from_now
+week1 = Assignment.create title: "Create a Concert", description: "Oh hai there", assigned: "2014-06-12", due_date: "2014-06-16"
+week2 = Assignment.create title: "Create a blackjack game", description: "DUECES Oh hai there", assigned: "2014-06-19", due_date: "2014-06-23"
+week3 = Assignment.create title: "Data Modeling in Rails", description: "TRES Oh hai there", assigned: "2014-06-26", due_date: "2014-06-30"
 
 
 [week1, week2, week3].each do |assignment|
