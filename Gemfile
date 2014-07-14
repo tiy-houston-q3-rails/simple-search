@@ -44,3 +44,5 @@ gem 'spring',        group: :development
 
 gem 'pry', group: [:development, :test]
 gem 'pry-nav', group: [:development, :test]
+
+gem 'rails_12factor', group: [:production]
