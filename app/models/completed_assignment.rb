@@ -5,9 +5,10 @@ class CompletedAssignment < ActiveRecord::Base
   validates :user, presence: true
   validates :assignment, presence: true
   validates :github_url, presence: true
-  validates :on_time, presence: true
+  validates :on_time, inclusion: {in: [true, false]}
 
   before_validation on: :create do
     self.on_time = Date.today <= assignment.due_date
+    true
   end
 end
