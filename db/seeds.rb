@@ -8,7 +8,7 @@ CompletedAssignment.destroy_all
 
 names = %w(sean adrianne nandita eric david kevin ayaz alex)
 names.each do |name|
-  User.create name: name
+  User.create! name: name, email: "#{name}@example.com", password: "examples", password_confirmation: "examples"
 end
 
 week1 = Assignment.create title: "Create a Concert", description: "Oh hai there", assigned: "2014-06-12", due_date: "2014-06-16"

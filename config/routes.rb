@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   post 'homework' => "homework#create", as: :homework
 
   resources :completed_assignments
