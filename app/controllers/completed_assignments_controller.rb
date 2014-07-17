@@ -4,23 +4,8 @@ class CompletedAssignmentsController < ApplicationController
   # GET /completed_assignments
   # GET /completed_assignments.json
   def index
-    @completed_assignments = CompletedAssignment.all
-
-    if params[:assignment_id].present?
-      @completed_assignments = @completed_assignments.where(assignment_id: params[:assignment_id])
-    end
-
-    if params[:name].present?
-      # searching by name, but need the id
-
-      # uses 2 queries
-      user_ids = User.where("name ILIKE ?", "%#{params[:name]}%").pluck(:id)
-      @completed_assignments = @completed_assignments.where(user_id: user_ids)
-
-      # uses 1 query
-      @completed_assignments = @completed_assignments.includes(:assignment).joins(:user).where("users.name ILIKE ?", "%#{params[:name]}%")
-
-    end
+    @search = Search.new(params[:search])
+    @completed_assignments = @search.search
 
   end
 

@@ -3,7 +3,16 @@
 
 <div class="well">
 
-  <%= form_tag completed_assignments_path, method: :get do %>
+  <%= simple_form_for @search, url: completed_assignments_path, method: :get do |f| %>
+    <%= f.input :assignment_id, as: :select, collection: Assignment.all %>
+    <%= f.input :name %>
+
+
+    <%= f.submit class: "btn btn-primary" %>
+  <% end %>
+
+
+<!--   <%= form_tag completed_assignments_path, method: :get do %>
     <div class="form-group">
       <label class="form-label">Select Assignment</label>
 
@@ -18,7 +27,7 @@
     <div class="form-group">
       <input type="submit" class="btn btn-primary" value="Search"/>
     </div>
-  <% end %>
+  <% end %> -->
 
 </div>
 
@@ -29,6 +38,7 @@
     <tr>
       <th>User</th>
       <th>Assignment</th>
+      <th>Assignment Desc</th>
       <th>On time</th>
       <th>Github url</th>
       <th colspan="3"></th>
@@ -40,6 +50,7 @@
       <tr>
         <td><%= completed_assignment.user.name %></td>
         <td><%= completed_assignment.assignment.title %></td>
+        <td><%= completed_assignment.assignment.description %></td>
         <td><%= completed_assignment.on_time %></td>
         <td><%= completed_assignment.github_url %></td>
         <td><%= link_to 'Show', completed_assignment %></td>
